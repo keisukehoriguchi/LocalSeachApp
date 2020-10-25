@@ -6,11 +6,17 @@
 //
 
 import UIKit
+import Alamofire
 
 class SearchVC: UIViewController {
-
+    
     @IBOutlet weak var searchTxt: UITextField!
     @IBOutlet weak var resultTableView: UITableView!
+    
+    var storeArray:[Store] = []
+    
+    // appid = "dj00aiZpPUNScGdxZEU4ZDdWOCZzPWNvbnN1bWVyc2VjcmV0Jng9YzQ-"
+    var getUrl:String = "https://map.yahooapis.jp/search/local/V1/localSearch?appid=dj00aiZpPUNScGdxZEU4ZDdWOCZzPWNvbnN1bWVyc2VjcmV0Jng9YzQ-&ac=13103"
     
     
     override func viewDidLoad() {
@@ -23,9 +29,19 @@ class SearchVC: UIViewController {
     }
     
     @IBAction func searchClicked(_ sender: Any) {
+        AF.request(getUrl).response { (response) in
+            guard let data = response.data else { return }
+            
+            do { self.storeArray = try JSONDecoder().decode([Store].self, from: data)
+                print(self.storeArray)
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
     }
     
 }
+
 
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,8 +50,8 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = resultTableView.dequeueReusableCell(withIdentifier: identifiers.resultTableViewCell, for: indexPath) as? ResultTableViewCell {
-        cell.configureCell()
-        return cell
+            cell.configureCell()
+            return cell
         }
         return UITableViewCell()
     }

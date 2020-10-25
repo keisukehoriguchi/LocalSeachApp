@@ -13,10 +13,11 @@ struct Store: Codable {
     var telephone: String
     var tag: String
     
-    init(data: [String: Any]) {
-        name = data["name"] as? String ?? ""
-        address = data["address"] as? String ?? ""
-        telephone = data["telephone"] as? String ?? ""
-        tag = data["tag"] as? String ?? ""
+    enum CodingKeys: String, CodingKey {
+        case name = "Name"
+        case address = "Address"
+        case telephone = "Tel1"
+        case tag = "Category"
     }
+
 }

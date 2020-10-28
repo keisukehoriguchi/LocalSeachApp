@@ -16,7 +16,8 @@ class SearchVC: UIViewController {
     var storeArray:[Store] = []
     
     // appid = "dj00aiZpPUNScGdxZEU4ZDdWOCZzPWNvbnN1bWVyc2VjcmV0Jng9YzQ-"
-    var getUrl:String = "https://map.yahooapis.jp/search/local/V1/localSearch?appid=dj00aiZpPUNScGdxZEU4ZDdWOCZzPWNvbnN1bWVyc2VjcmV0Jng9YzQ-&ac=13103"
+    var getUrl:String = "https://map.yahooapis.jp/search/local/V1/localSearch"
+    var word:String = "千葉県"
     
     
     override func viewDidLoad() {
@@ -29,8 +30,14 @@ class SearchVC: UIViewController {
     }
     
     @IBAction func searchClicked(_ sender: Any) {
-        AF.request(getUrl).response { (response) in
-            guard let data = response.data else { return }
+        
+        AF.request(getUrl, method: .get, parameters: [
+                  "appid": "dj00aiZpPUNScGdxZEU4ZDdWOCZzPWNvbnN1bWVyc2VjcmV0Jng9YzQ-",
+                  "output":"json",
+                  "devise":"mobile"
+                  ,"query":"\(word)"]).responseJSON { (response) in
+                    
+                    guard let data = response.data else { return }
             
             do { self.storeArray = try JSONDecoder().decode([Store].self, from: data)
                 print(self.storeArray)

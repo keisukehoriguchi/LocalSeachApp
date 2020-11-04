@@ -13,11 +13,11 @@ class SearchVC: UIViewController {
     @IBOutlet weak var searchTxt: UITextField!
     @IBOutlet weak var resultTableView: UITableView!
     
-    var storeArray:[Store] = []
     
     // appid = "dj00aiZpPUNScGdxZEU4ZDdWOCZzPWNvbnN1bWVyc2VjcmV0Jng9YzQ-"
     var getUrl:String = "https://map.yahooapis.jp/search/local/V1/localSearch"
-    var word:String = "千葉県"
+    var word:String = "市川市"
+    var responseValues = Response(stores: [])
     
     
     override func viewDidLoad() {
@@ -39,8 +39,9 @@ class SearchVC: UIViewController {
                     
                     guard let data = response.data else { return }
             
-            do { self.storeArray = try JSONDecoder().decode([Store].self, from: data)
-                print(self.storeArray)
+                    do {self.responseValues = try JSONDecoder().decode(Response.self, from: data)
+                        print(self.responseValues.stores[0])
+                self.resultTableView.reloadData()
             } catch let error {
                 print("Error: \(error)")
             }
@@ -52,12 +53,12 @@ class SearchVC: UIViewController {
 
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return responseValues.stores.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = resultTableView.dequeueReusableCell(withIdentifier: identifiers.resultTableViewCell, for: indexPath) as? ResultTableViewCell {
-            cell.configureCell()
+            cell.configureCell(response: responseValues, index: indexPath.row)
             return cell
         }
         return UITableViewCell()

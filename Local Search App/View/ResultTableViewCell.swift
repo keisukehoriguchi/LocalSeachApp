@@ -8,7 +8,7 @@
 import UIKit
 
 class ResultTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var telLbl: UILabel!
@@ -18,18 +18,18 @@ class ResultTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    func configureCell() {
-        nameLbl.text = "a"
-        addressLbl.text = "a"
-        telLbl.text = "a"
-        tagLbl.text = "a"
+    func configureCell(response: Response, index:Int) {
+        nameLbl.text = response.stores[index].name
+        addressLbl.text = response.stores[index].property.address
+        telLbl.text = response.stores[index].property.telephone ?? ""
+        guard let category = response.stores[index].category?[0] else { return }
+        tagLbl.text = category
     }
-    
 }

@@ -16,7 +16,7 @@ class SearchVC: UIViewController {
     
     // appid = "dj00aiZpPUNScGdxZEU4ZDdWOCZzPWNvbnN1bWVyc2VjcmV0Jng9YzQ-"
     var getUrl:String = "https://map.yahooapis.jp/search/local/V1/localSearch"
-    var word:String = "市川市"
+    var word:String = ""
     var responseValues = Response(stores: [])
     
     
@@ -30,6 +30,9 @@ class SearchVC: UIViewController {
     }
     
     @IBAction func searchClicked(_ sender: Any) {
+        
+        guard let text = searchTxt.text else {return}
+        word = text
         
         AF.request(getUrl, method: .get, parameters: [
                   "appid": "dj00aiZpPUNScGdxZEU4ZDdWOCZzPWNvbnN1bWVyc2VjcmV0Jng9YzQ-",

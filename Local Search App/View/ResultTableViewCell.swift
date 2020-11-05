@@ -29,7 +29,10 @@ class ResultTableViewCell: UITableViewCell {
         nameLbl.text = response.stores[index].name
         addressLbl.text = response.stores[index].property.address
         telLbl.text = response.stores[index].property.telephone ?? ""
-        guard let category = response.stores[index].category?[0] else { return }
-        tagLbl.text = category
+        if response.stores[index].category?.isEmpty ?? true {
+            tagLbl.text = ""
+        } else {
+            tagLbl.text = response.stores[index].category?[0]
+        }
     }
 }

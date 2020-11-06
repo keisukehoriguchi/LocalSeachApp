@@ -28,10 +28,12 @@ struct Response: Codable {
         struct Property: Codable {
             var telephone: String? = ""
             var address: String = ""
+            var leadImg: String? = ""
             
             enum CodingKeys: String, CodingKey {
                 case telephone = "Tel1"
                 case address = "Address"
+                case leadImg = "LeadImage"
             }
         }
     }

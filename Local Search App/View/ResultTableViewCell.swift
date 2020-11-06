@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ResultTableViewCell: UITableViewCell {
     
@@ -13,6 +14,9 @@ class ResultTableViewCell: UITableViewCell {
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var telLbl: UILabel!
     @IBOutlet weak var tagLbl: UILabel!
+    @IBOutlet weak var storeImg: UIImageView!
+    
+    var storeImgUrl:String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,5 +38,10 @@ class ResultTableViewCell: UITableViewCell {
         } else {
             tagLbl.text = response.stores[index].category?[0]
         }
+        
+        if let url = response.stores[index].property.leadImg {
+            storeImg.kf.setImage(with: URL(string: url))
+        }
     }
+    
 }

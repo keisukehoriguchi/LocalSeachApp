@@ -16,11 +16,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="485" height="90"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YdR-YU-rXA">
+                        <rect key="frame" x="385" y="0.0" width="100" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="VDI-Pb-eeR"/>
+                        </constraints>
+                    </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9bi-JN-DqH">
-                        <rect key="frame" x="0.0" y="0.0" width="485" height="82.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="385" height="82.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="VC5-hW-uSX">
-                                <rect key="frame" x="5" y="0.0" width="475" height="22.5"/>
+                                <rect key="frame" x="5" y="0.0" width="375" height="22.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="bUm-Af-4xx"/>
                                 </constraints>
@@ -29,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="eUd-9T-15w">
-                                <rect key="frame" x="5" y="27.5" width="475" height="15"/>
+                                <rect key="frame" x="5" y="27.5" width="375" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="my5-j2-nIW"/>
                                 </constraints>
@@ -38,7 +44,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="BFA-r0-XFH">
-                                <rect key="frame" x="5" y="47.5" width="475" height="15"/>
+                                <rect key="frame" x="5" y="47.5" width="375" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="OnK-UB-Dv1"/>
                                 </constraints>
@@ -47,7 +53,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="ble-ze-nxp">
-                                <rect key="frame" x="5" y="67.5" width="475" height="15"/>
+                                <rect key="frame" x="5" y="67.5" width="375" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="s33-a7-nBa"/>
                                 </constraints>
@@ -69,16 +75,20 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="9bi-JN-DqH" secondAttribute="bottom" id="800-sx-MHr"/>
-                    <constraint firstAttribute="trailing" secondItem="9bi-JN-DqH" secondAttribute="trailing" id="8qH-B1-cs8"/>
-                    <constraint firstItem="9bi-JN-DqH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="XTB-44-XTo"/>
-                    <constraint firstItem="9bi-JN-DqH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sEQ-dz-WBv"/>
+                    <constraint firstAttribute="bottom" secondItem="9bi-JN-DqH" secondAttribute="bottom" id="9tf-Ph-h8E"/>
+                    <constraint firstItem="YdR-YU-rXA" firstAttribute="leading" secondItem="9bi-JN-DqH" secondAttribute="trailing" id="Bix-aK-ft7"/>
+                    <constraint firstItem="9bi-JN-DqH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="CUL-gi-9Bc"/>
+                    <constraint firstItem="YdR-YU-rXA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="T5m-7D-l4r"/>
+                    <constraint firstAttribute="bottom" secondItem="YdR-YU-rXA" secondAttribute="bottom" id="ZAF-Hs-GGk"/>
+                    <constraint firstAttribute="trailing" secondItem="YdR-YU-rXA" secondAttribute="trailing" id="p3I-KS-k7k"/>
+                    <constraint firstItem="9bi-JN-DqH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sus-ob-Dep"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addressLbl" destination="eUd-9T-15w" id="zTw-AJ-OeH"/>
                 <outlet property="nameLbl" destination="VC5-hW-uSX" id="8Si-ec-J6l"/>
+                <outlet property="storeImg" destination="YdR-YU-rXA" id="nXj-kB-dhW"/>
                 <outlet property="tagLbl" destination="ble-ze-nxp" id="XtB-X8-e4S"/>
                 <outlet property="telLbl" destination="BFA-r0-XFH" id="AGp-Zk-cqW"/>
             </connections>

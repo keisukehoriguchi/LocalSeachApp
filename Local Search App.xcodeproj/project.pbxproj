@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044AFCF62557F33F00EC10DA /* StoreDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044AFCF52557F33F00EC10DA /* StoreDetailVC.swift */; };
 		044B0B5B25453574009AB996 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044B0B5A25453574009AB996 /* AppDelegate.swift */; };
 		044B0B5D25453574009AB996 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044B0B5C25453574009AB996 /* SceneDelegate.swift */; };
 		044B0B5F25453574009AB996 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044B0B5E25453574009AB996 /* SearchVC.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		044AFCF52557F33F00EC10DA /* StoreDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailVC.swift; sourceTree = "<group>"; };
 		044B0B5725453574009AB996 /* Local Search App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Local Search App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		044B0B5A25453574009AB996 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		044B0B5C25453574009AB996 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				044B0B5E25453574009AB996 /* SearchVC.swift */,
+				044AFCF52557F33F00EC10DA /* StoreDetailVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				044B0B5F25453574009AB996 /* SearchVC.swift in Sources */,
+				044AFCF62557F33F00EC10DA /* StoreDetailVC.swift in Sources */,
 				044B0B5B25453574009AB996 /* AppDelegate.swift in Sources */,
 				044B0B7A25453669009AB996 /* ResultTableViewCell.swift in Sources */,
 				044B0B5D25453574009AB996 /* SceneDelegate.swift in Sources */,

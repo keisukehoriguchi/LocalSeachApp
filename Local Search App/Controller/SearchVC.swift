@@ -14,11 +14,8 @@ class SearchVC: UIViewController {
     @IBOutlet weak var resultTableView: UITableView!
     
     
-    // appid = "dj00aiZpPUNScGdxZEU4ZDdWOCZzPWNvbnN1bWVyc2VjcmV0Jng9YzQ-"
     var getUrl:String = "https://map.yahooapis.jp/search/local/V1/localSearch"
-    var word:String = ""
-    var responseValues = Response(stores: [])
-    
+    var responseValues = Response?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,24 +28,26 @@ class SearchVC: UIViewController {
     
     @IBAction func searchClicked(_ sender: Any) {
         
-        guard let text = searchTxt.text else {return}
-        word = text
+        guard let word = searchTxt.text, !word.isEmpty else {
+            simpleAlert(title: "検索条件が不適切です。", msg: "条件を入力してください。")
+            return
+        }
         
         AF.request(getUrl, method: .get, parameters: [
-                  "appid": "dj00aiZpPUNScGdxZEU4ZDdWOCZzPWNvbnN1bWVyc2VjcmV0Jng9YzQ-",
-                  "output":"json",
-                  "devise":"mobile"
-                  ,"query":"\(word)"]).responseJSON { (response) in
-                    
-                    guard let data = response.data else { return }
-            
-                    do {self.responseValues = try JSONDecoder().decode(Response.self, from: data)
-                        print(self.responseValues.stores[0])
-                self.resultTableView.reloadData()
-            } catch let error {
-                print("Error: \(error)")
-            }
-        }
+                    "appid": "dj00aiZpPUNScGdxZEU4ZDdWOCZzPWNvbnN1bWVyc2VjcmV0Jng9YzQ-",
+                    "output":"json",
+                    "devise":"mobile"
+                    ,"query":"\(word)"]).responseJSON { (response) in
+                        
+                        switch response.result {
+                        case .success(let data):
+                            self.responseValues = try? JSONDecoder().decode(Response.self, from: data)
+                            self.resultTableView.reloadData()
+                        case .failure(let error):
+                            self.simpleAlert(title: "リクエスト/デコードに失敗しました", msg: "エラーメッセージは下記となります。\(error)")
+                            print(error)
+                        }
+                    }
     }
     
 }
@@ -56,16 +55,28 @@ class SearchVC: UIViewController {
 
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return responseValues.stores.count
+        return responseValues?.stores.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = resultTableView.dequeueReusableCell(withIdentifier: identifiers.resultTableViewCell, for: indexPath) as? ResultTableViewCell {
+        let cell = resultTableView.dequeueReusableCell(withIdentifier: identifiers.resultTableViewCell, for: indexPath) as! ResultTableViewCell
+        if let responseValues = responseValues {
             cell.configureCell(response: responseValues, index: indexPath.row)
             return cell
         }
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: identifiers.toStoreDetailVC, sender: nil)
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == identifiers.toStoreDetailVC {
+            if let row = resultTableView.indexPathForSelectedRow?.row {
+                let vc = segue.destination as! StoreDetailVC
+                vc.store = responseValues.stores[row]
+            }
+        }
+    }
 }

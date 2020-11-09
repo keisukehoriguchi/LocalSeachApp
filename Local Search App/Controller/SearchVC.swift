@@ -15,7 +15,7 @@ class SearchVC: UIViewController {
     
     
     var getUrl:String = "https://map.yahooapis.jp/search/local/V1/localSearch"
-    var responseValues = Response?
+    var responseValues: Response?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +42,7 @@ class SearchVC: UIViewController {
                         switch response.result {
                         case .success(let data):
                             self.responseValues = try? JSONDecoder().decode(Response.self, from: data)
+                            //from:dataだとエラーになったので、Fixしたらas! Dataがついた。
                             self.resultTableView.reloadData()
                         case .failure(let error):
                             self.simpleAlert(title: "リクエスト/デコードに失敗しました", msg: "エラーメッセージは下記となります。\(error)")
@@ -49,9 +50,7 @@ class SearchVC: UIViewController {
                         }
                     }
     }
-    
 }
-
 
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,7 +74,8 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == identifiers.toStoreDetailVC {
             if let row = resultTableView.indexPathForSelectedRow?.row {
                 let vc = segue.destination as! StoreDetailVC
-                vc.store = responseValues.stores[row]
+                vc.store = responseValues?.stores[row] ?? Response.Store()
+                //ここも！でいいかも。選択できる時点でstoresがブランクなことはない。
             }
         }
     }

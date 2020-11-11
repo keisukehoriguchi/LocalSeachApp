@@ -37,7 +37,7 @@ class SearchVC: UIViewController {
                     "appid": "dj00aiZpPUNScGdxZEU4ZDdWOCZzPWNvbnN1bWVyc2VjcmV0Jng9YzQ-",
                     "output":"json",
                     "devise":"mobile"
-                    ,"query":"\(word)"]).responseJSON { (response) in
+                    ,"query":"\(word)"]).responseData { (response) in
                         
                         switch response.result {
                         case .success(let data):

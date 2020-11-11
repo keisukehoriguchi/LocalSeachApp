@@ -84,10 +84,56 @@
                     <view key="view" contentMode="scaleToFill" id="sjj-sx-T35">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i9N-EY-NQU">
+                                <rect key="frame" x="0.0" y="88" width="414" height="309.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXa-G0-8h6">
+                                <rect key="frame" x="0.0" y="397.5" width="414" height="77.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeC-aD-6hK">
+                                <rect key="frame" x="0.0" y="475" width="414" height="77.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="414" translatesAutoresizingMaskIntoConstraints="NO" id="S20-19-dJ2">
+                                <rect key="frame" x="0.0" y="572.5" width="414" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="B26-HW-lRe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UXa-G0-8h6" firstAttribute="top" secondItem="i9N-EY-NQU" secondAttribute="bottom" id="2Wf-fr-NbD"/>
+                            <constraint firstItem="i9N-EY-NQU" firstAttribute="height" secondItem="B26-HW-lRe" secondAttribute="height" multiplier="0.4" id="4zf-v3-Tnp"/>
+                            <constraint firstItem="i9N-EY-NQU" firstAttribute="leading" secondItem="B26-HW-lRe" secondAttribute="leading" id="AMc-UA-O6Q"/>
+                            <constraint firstItem="S20-19-dJ2" firstAttribute="leading" secondItem="B26-HW-lRe" secondAttribute="leading" id="INH-bJ-l58"/>
+                            <constraint firstItem="UXa-G0-8h6" firstAttribute="trailing" secondItem="B26-HW-lRe" secondAttribute="trailing" id="JjR-Le-aks"/>
+                            <constraint firstItem="QeC-aD-6hK" firstAttribute="trailing" secondItem="B26-HW-lRe" secondAttribute="trailing" id="Nxc-Ui-1Sf"/>
+                            <constraint firstItem="QeC-aD-6hK" firstAttribute="leading" secondItem="B26-HW-lRe" secondAttribute="leading" id="P3J-qd-n5A"/>
+                            <constraint firstItem="UXa-G0-8h6" firstAttribute="leading" secondItem="B26-HW-lRe" secondAttribute="leading" id="QLY-Gw-86b"/>
+                            <constraint firstItem="i9N-EY-NQU" firstAttribute="trailing" secondItem="B26-HW-lRe" secondAttribute="trailing" id="R2G-Jv-Bie"/>
+                            <constraint firstItem="S20-19-dJ2" firstAttribute="top" secondItem="QeC-aD-6hK" secondAttribute="bottom" constant="20" id="Vhg-ty-xpB"/>
+                            <constraint firstItem="QeC-aD-6hK" firstAttribute="top" secondItem="UXa-G0-8h6" secondAttribute="bottom" id="dhS-7E-Bc1"/>
+                            <constraint firstItem="i9N-EY-NQU" firstAttribute="top" secondItem="B26-HW-lRe" secondAttribute="top" id="evm-94-2m5"/>
+                            <constraint firstItem="QeC-aD-6hK" firstAttribute="height" secondItem="UXa-G0-8h6" secondAttribute="height" id="gxb-49-zVM"/>
+                            <constraint firstItem="S20-19-dJ2" firstAttribute="trailing" secondItem="B26-HW-lRe" secondAttribute="trailing" id="gzi-8C-khU"/>
+                            <constraint firstItem="UXa-G0-8h6" firstAttribute="height" secondItem="B26-HW-lRe" secondAttribute="height" multiplier="0.1" id="roj-gF-xPd"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e5v-Ot-qCg"/>
+                    <connections>
+                        <outlet property="accessLbl" destination="QeC-aD-6hK" id="CCv-a3-aYz"/>
+                        <outlet property="addressLbl" destination="UXa-G0-8h6" id="xGj-Zj-RKa"/>
+                        <outlet property="detailLbl" destination="S20-19-dJ2" id="e0q-x5-tgq"/>
+                        <outlet property="storeImg" destination="i9N-EY-NQU" id="FSK-Tr-cUw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pyj-ro-oJY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

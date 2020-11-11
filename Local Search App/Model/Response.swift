@@ -29,11 +29,17 @@ struct Response: Codable {
             var telephone: String? = ""
             var address: String = ""
             var leadImg: String? = ""
+            var rating: String? = ""
+            var access: String? = ""
+            var catchcopy: String? = ""
             
             enum CodingKeys: String, CodingKey {
                 case telephone = "Tel1"
                 case address = "Address"
                 case leadImg = "LeadImage"
+                case rating = "Rating"
+                case access = "Access1"
+                case catchcopy = "CatchCopy"
             }
         }
     }
